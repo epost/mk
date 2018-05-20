@@ -1,0 +1,48 @@
+name:                mk
+version:             0.1.0.0
+github:              "epost/mk"
+license:             BSD3
+author:              "Erik Post"
+maintainer:          "example@example.com"
+copyright:           "2018 Erik Post"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+synopsis:            Generic build tool frontend
+category:            Text, Parsing
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/epost/mk#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- megaparsec >= 6.2
+
+library:
+  source-dirs: src
+
+executables:
+  mk-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - mk
+
+tests:
+  mk-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - mk
